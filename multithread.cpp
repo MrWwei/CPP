@@ -48,7 +48,8 @@ int main()
     std::vector<double> v;//存储随机数
     for (int i = 0; i < 1000; i++) 
     {
-        v.push_back(rand());
+        //C++生成随机数，%tmp 即生成（0，tmp）范围的整数
+        v.push_back(rand()%100);
     } 
     cout << v.size() << endl;
     double value = 0.0;  
@@ -69,7 +70,7 @@ int main()
     double anotherv = 0.0;
     auto iterEnd = v.end();
     st = clock();    
-    // &anotherv, mainThreadId, iterMid, iterEnd
+    // &anotherv, mainThreadId, iterMid, iterEnd   lambda函数使用[](){}
     std::thread s([=,&anotherv]() {           // lambda ？？？？？？？？？？？？？？？？
         anotherv = visitRange(mainThreadId, iterMid, iterEnd, caculate);
         
